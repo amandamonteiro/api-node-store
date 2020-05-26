@@ -10,6 +10,6 @@ router.get('/admin/:id', productController.getById);
 router.get('/tags/:tag', productController.getByTag);
 router.post('/', productController.post);
 router.put('/:id', productController.put);
-router.delete('/', productController.delete);
+router.delete('/:id', productController.delete);
 
 module.exports = router;

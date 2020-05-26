@@ -10,13 +10,12 @@ const schema = new Schema({
         required: true,
         trim: true
     },
-    slug: {
-        type: String,
-        required: [true, 'O slug é obrigatório'],
-        trim: true,
-        index: true,
-        unique: true
-    },
+    // slug: {
+    //     type: String,
+    //     required: [true, 'O slug é obrigatório'],
+    //     trim: true,
+    //     index: true,
+    // },
     description: {
         type: String,
         required: true
@@ -29,16 +28,12 @@ const schema = new Schema({
         type: Boolean,
         required: true,
         default: true
-    },
-    tags: [{
-        type: String,
-        required: true
-    }],
-    image: {
-        type: String,
-        required: true,
-        trim: true
     }
+    // image: {
+    //     type: String,
+    //     required: true,
+    //     trim: true
+    // }
 });
 
-module.exports = mongoose.model('Product',schema);
+module.exports = mongoose.model('Product', schema);
