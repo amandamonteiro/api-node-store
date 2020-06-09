@@ -20,8 +20,9 @@ exports.post = async(req, res, next) => {
             message: 'Cliente cadastrado com sucesso!'
         });
     } catch (e) {
-        resp.status(500).send({
-            message: 'Falha ao processar sua requisição! '
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição! ',
+            data: (e)
         });
     }
 

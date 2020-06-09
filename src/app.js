@@ -2,6 +2,10 @@
 
 const express = require('express');
 const bodyParser = require('body-Parser')
+const mongoose = require('mongoose');
+const app = express();
+const cors = require('cors');
+
 const indexRouter = require('./routes/index-router');
 const productRouter = require('./routes/product-router');
 const dogRouter = require('./routes/dog-router');
@@ -11,9 +15,6 @@ const carroRouter = require('./routes/carro-router');
 const descontoRouter = require('./routes/desconto-router');
 const customerRouter = require('./routes/customer-router');
 const orderRouter = require('./routes/order-router');
-const mongoose = require('mongoose');
-const app = express();
-const cors = require('cors');
 
 app.use(cors());
 app.use(bodyParser.json());

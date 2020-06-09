@@ -9,7 +9,7 @@ exports.get = async(req, res, next) => {
         var data = await repository.get();
         res.status(200).send(data);
     } catch (e) {
-        resp.status(500).send({
+        res.status(500).send({
             message: 'Falha ao processar todos os produtos. '
         });
     }
@@ -20,8 +20,9 @@ exports.getBySlug = async(req, res, next) => {
         var data = await repository.getBySlug(req.params.slug);
         res.status(200).send(data)
     } catch (e) {
-        resp.status(500).send({
-            message: 'Falha ao processar sua requisição! '
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição! ',
+            data: (e)
         });
     }
 };
@@ -29,16 +30,11 @@ exports.getBySlug = async(req, res, next) => {
 exports.getById = async(req, res, next) => {
     try {
         var produto = await repository.getById(req.params.id);
-        if (produto.title == "Gustavo") {
-            res.status(200).send({
-                message: 'amor da minha vida. '
-            })
-        } else {
-            res.status(200).send(produto);
-        }
+        res.status(200).send({})
     } catch (e) {
-        resp.status(500).send({
-            message: 'Falha ao processar sua requisição! '
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição! ',
+            data: (e)
         });
     }
 };
@@ -48,8 +44,9 @@ exports.getByTag = async(req, res, next) => {
         var data = await repository.getByTag(req.params.tag);
         res.status(200).send(data)
     } catch (e) {
-        resp.status(500).send({
-            message: 'Falha ao processar sua requisição! '
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição! ',
+            data: (e)
         });
     }
 };
@@ -69,8 +66,9 @@ exports.post = async(req, res, next) => {
             message: 'Produto cadastrado com sucesso!'
         });
     } catch (e) {
-        resp.status(500).send({
-            message: 'Falha ao processar sua requisição! '
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição! ',
+            data: (e)
         });
     }
 
@@ -83,21 +81,23 @@ exports.put = async(req, res, next) => {
             message: 'Produto atualizado com sucesso! '
         });
     } catch (e) {
-        resp.status(500).send({
-            message: 'Falha ao atualizar o produto! '
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição! ',
+            data: (e)
         });
     }
 };
 
 exports.delete = async(req, res, next) => {
     try {
-        await repository.delete(req.body.id);
+        await repository.delete(req.params.id);
         res.status(200).send({
             message: "Produto removido com sucesso! "
         });
     } catch (e) {
         res.status(400).send({
             message: "Falha ao remover o produto! ",
+            data: (e)
         });
     }
 };

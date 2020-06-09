@@ -3,9 +3,7 @@
 const Product = require('../models/product');
 
 exports.get = async() => {
-    const res = await Product.find({
-        active: true
-    }, 'title price slug');
+    const res = await Product.find({});
     return res;
 }
 
@@ -46,8 +44,6 @@ exports.update = async(id, product) => {
                 title: product.title,
                 description: product.description,
                 price: product.price,
-                slug: product.slug,
-                tags: product.tags
             }
         });
 }
